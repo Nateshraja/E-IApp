@@ -1,0 +1,61 @@
+{% extends 'expenses/base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h2>Expenses</h2>
+<table class="table">
+  <!-- Table headers -->
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for expense in expenses %}
+    <tr>
+      <!-- Expense details -->
+      <td>{{ expense.date }}</td>
+      <td>{{ expense.description }}</td>
+      <td>{{ expense.amount }}</td>
+      <!-- Actions -->
+      <td>
+        <a href="{% url 'expenses:edit_expense' expense.pk %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'expenses:delete_expense' expense.pk %}" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>Installments</h2>
+<table class="table">
+  <!-- Table headers -->
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for installment in installments %}
+    <tr>
+      <!-- Installment details -->
+      <td>{{ installment.date }}</td>
+      <td>{{ installment.description }}</td>
+      <td>{{ installment.amount }}</td>
+      <!-- Actions -->
+      <td>
+        <a href="{% url 'expenses:edit_installment' installment.pk %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'expenses:delete_installment' installment.pk %}" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

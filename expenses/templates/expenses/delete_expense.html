@@ -1,0 +1,16 @@
+{% extends 'expenses/base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h1>Delete Expense</h1>
+    <p>Are you sure you want to delete the expense?</p>
+    <p><strong>Date:</strong> {{ expense.date }}</p>
+    <p><strong>Description:</strong> {{ expense.description }}</p>
+    <p><strong>Amount:</strong> {{ expense.amount }}</p>
+    <form method="POST">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Delete</button>
+      <a href="{% url 'expenses:report' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+{% endblock %}
